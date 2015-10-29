@@ -1,0 +1,19 @@
+{
+    "name": "mmf/mmf",
+    "description": "Mamasu framework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Xavier Casahuga",
+            "email": "xavier@mamasu.es"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mmf\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+
+}
