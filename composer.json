@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Mmf\\": "src/"
+            "Mmf\\": "src/mmf/"
         }
     },
     "minimum-stability": "dev",
