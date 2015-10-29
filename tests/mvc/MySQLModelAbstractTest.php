@@ -13,7 +13,6 @@ class MySQLModelAbstractTest extends \PHPUnit_Framework_TestCase {
     protected $insertID;
 
     public static function setUpBeforeClass() {
-        include_once __DIR__ . '/../include.php';
     }
 
 

@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
-
 use Mmf\Event\EventManager;
 use Mmf\Event\EventObserver;
 use Mmf\Event\Event;
@@ -19,26 +16,26 @@ use Mmf\Event\Event;
  * Description
  *
  * @author Xavier Casahuga <xavier.casahuga@mamasu.es>
- * 
+ *
  */
 class EventManagerTest extends \PHPUnit_Framework_TestCase {
-    
-    
-    
+
+
+
     public static function setUpBeforeClass() {
-        //include_once __DIR__.'/../include.php';     
+        //include_once __DIR__.'/../include.php';
     }
-    
-    
+
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        
+
     }
 
-    
+
     /**
      * @group event
      * @group modules
@@ -63,16 +60,16 @@ class EventManagerTest extends \PHPUnit_Framework_TestCase {
         //Attach the a class to the Event with the Event Name (Observer, Event, Function)
         $MmfEventManager->attach($MmfEventObserver2, 'Test.Event', 'testEventProperties', 1);
         $MmfEventManager->attach($MmfEventObserver1, 'Test.Event', 'testEventPropagation', 2);
-        $MmfEventManager->attach($MmfEventObserver,  'Test.Event', 'testEvent', 3);        
+        $MmfEventManager->attach($MmfEventObserver,  'Test.Event', 'testEvent', 3);
 
         //Dispatch the event
         $MmfEventManager->dispatch($MmfEvent);
-        
+
         $this->assertEquals($property, 'New Content');
         $this->assertEquals(true,  $MmfEventObserver2->isUpdate);
         $this->assertEquals(true,  $MmfEventObserver1->isUpdate);
         $this->assertEquals(false, $MmfEventObserver->isUpdate);
-        
+
         unset($MmfEventManager);
         unset($MmfEventObserver);
         unset($MmfEventObserver1);

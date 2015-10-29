@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
 
 use Mmf\MVC\PDO AS MmfPDO;
 /**
@@ -48,28 +46,28 @@ class MmfAuthBasicTest extends \PHPUnit_Framework_TestCase {
         $requestUser = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUser->method('input')
                 ->will($this->returnCallback('callbackRequestUserAuthBasic'));
 
         $requestAdmin = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestAdmin->method('input')
                 ->will($this->returnCallback('callbackRequestAdminAuthBasic'));
 
         $requestUserNotAuth = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUserNotAuth->method('input')
                 ->will($this->returnCallback('callbackRequestUserNotValidUser'));
 
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
 
@@ -88,7 +86,7 @@ class MmfAuthBasicTest extends \PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**
@@ -223,17 +221,17 @@ class MmfAuthBasicTest extends \PHPUnit_Framework_TestCase {
         $requestUser = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUser->method('input')
                 ->will($this->returnCallback('callbackRequestUserAuthBasic'));
-        
+
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
-        
+
         $communication = $this->getMockBuilder('Mmf\IO\CommunicationInterface')
                 ->disableOriginalConstructor()
                 ->getMock();

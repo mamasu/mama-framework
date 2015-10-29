@@ -10,10 +10,9 @@ class SessionFactoryTest extends PHPUnit_Framework_TestCase {
      */
     protected $object;
 
-    public static function setUpBeforeClass() {        
-        include_once __DIR__ . '/../include.php';        
+    public static function setUpBeforeClass() {
     }
-    
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -27,7 +26,7 @@ class SessionFactoryTest extends PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**

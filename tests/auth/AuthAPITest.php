@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
 
 use Mmf\MVC\PDO AS MmfPDO;
 use Mmf\Auth\AuthAPI;
@@ -43,7 +41,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $requestguest = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestguest->method('input')
                 ->will($this->returnCallback('callbackRequestguestAuthAPI'));
 
@@ -56,7 +54,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $requestAdmin = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestAdmin->method('input')
                 ->will($this->returnCallback('callbackRequestAdminAuthAPI'));
 
@@ -70,7 +68,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
 
@@ -89,7 +87,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**
@@ -130,7 +128,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
 
@@ -155,7 +153,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
      * @covers MmfAuth::isAuthenticated
      * @covers MmfAuth::__construct
      * @covers MmfAuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
-     * @covers MmfAuthModel::getRoleAndUserFromToken     
+     * @covers MmfAuthModel::getRoleAndUserFromToken
      * @group auth
      * @group db
      * @group modules
@@ -166,14 +164,14 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $requestUserNotAuth = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUserNotAuth->method('input')
                 ->will($this->returnCallback('callbackRequestUserNotAutenticate'));
 
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
 
@@ -209,14 +207,14 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $requestUserNotAuth = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUserNotAuth->method('input')
                 ->will($this->returnCallback('callbackRequestUserNotAutenticate'));
 
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
 
@@ -346,17 +344,17 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
         $requestUser = $this->getMockBuilder('Mmf\IO\RequestInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $requestUser->method('input')
                 ->will($this->returnCallback('callbackRequestUserAuthAPI'));
-        
+
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        
+
         $config->method('get')
                 ->will($this->returnCallback('callbackConfig'));
-        
+
         $communication = $this->getMockBuilder('Mmf\IO\CommunicationInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
@@ -366,7 +364,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
 
         $this->objectUser = new AuthAPI(null, $requestUser, $connection,
                 $config, $language);
-        
+
         $this->assertEquals(true, true);
     }
 

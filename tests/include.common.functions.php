@@ -8,7 +8,7 @@ function callbackConfig() {
                         'translateClass'=>'\Mmf\Language\Translator',
                         'languageClass'=>'Language',
                         'locale'=>array('spa','eng'),
-                        'translatePath'=>__DIR__.'/../../src/language/translate/');
+                        'translatePath'=>__DIR__.'/../app/translate/');
     $return = array('db_default'   => $conection1,
                     'db_secondary' => $conection2,
                     'auth'         => array('sessionTimeLife' => 86400),

@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
-
 use Mmf\Auth\Auth;
 use Mmf\MVC\PDO AS MmfPDO;
 
@@ -24,7 +21,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
      * @var MmfAuth
      */
     protected $objectAdmin;
-    
+
     /**
      * @var MmfAuth
      */
@@ -53,7 +50,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         $sessionguest->method('get')
                 ->will($this->returnCallback('callbackSessionguestAuth'));
         /* End Create user guess */
-        
+
         /* Create user user */
         $sessionUser = $this->getMockBuilder('Mmf\Parameter\SessionInterface')
                 ->disableOriginalConstructor()
@@ -69,7 +66,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         $sessionAdmin->method('get')
                 ->will($this->returnCallback('callbackSessionAdminAuth'));
         /* End Create user admin */
-        
+
         /* Create user admin */
         $sessionUserDBNoExist = $this->getMockBuilder('Mmf\Parameter\SessionInterface')
                 ->disableOriginalConstructor()
@@ -77,13 +74,13 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         $sessionUserDBNoExist->method('get')
                 ->will($this->returnCallback('callbackSessionUserNoDatabaseAuth'));
         /* End Create user admin */
-        
+
         $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
         $config->method('get')
                 ->will($this->returnCallback('callbackConfigAuth'));
-        
+
 
         $connection = new MmfPDO($config);
 
@@ -98,7 +95,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**
@@ -231,7 +228,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(21, $this->objectUser->getUserId());
         $this->assertEquals(22, $this->objectAdmin->getUserId());
     }
-    
+
     /**
      * @covers MmfAuth::__construct
      * @covers MmfAuth::logout
@@ -283,7 +280,7 @@ function callbackConfigAuth() {
         'user' => 'root', 'pass' => 'root');
     $conection2 = array('host' => 'localhost', 'port' => '8889', 'name' => 'marketplace1',
         'user' => 'root', 'pass' => 'root');
-    
+
     $return = array('db_default' => $conection1, 'db_secondary' => $conection2);
     return $return[$functionArguments[0]];
 }

@@ -17,7 +17,6 @@ class LanguageFileSystemTest extends PHPUnit_Framework_TestCase {
     protected $communicator;
 
     public static function setUpBeforeClass() {
-        include_once __DIR__.'/../include.php';
         include_once __DIR__.'/../include.common.functions.php';
     }
 

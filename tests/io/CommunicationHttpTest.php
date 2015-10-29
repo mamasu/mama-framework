@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
 
 class CommunicationHttpTest extends PHPUnit_Framework_TestCase {
 
@@ -12,7 +10,7 @@ class CommunicationHttpTest extends PHPUnit_Framework_TestCase {
     public static function setUpBeforeClass() {
         //include_once __DIR__.'/../include.php';
     }
-    
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -26,7 +24,7 @@ class CommunicationHttpTest extends PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**
@@ -41,11 +39,11 @@ class CommunicationHttpTest extends PHPUnit_Framework_TestCase {
         $uri                    = '/test.php?varname=asdf&varnmae2=asdf';
         $_SERVER['HTTP_HOST']   = $host;
         $_SERVER['REQUEST_URI'] = $uri;
-        
+
         $route = $this->object->route();
         $this->assertEquals($uri, $route);
     }
-    
+
     /**
      * @covers MmfCommunicationHttp::setRoute
      * @group io
@@ -57,7 +55,7 @@ class CommunicationHttpTest extends PHPUnit_Framework_TestCase {
         $host                   = 'testhost1';
         $uri                    = '/test.php?varname=asdf&varnmae2=asdf1';
         $this->object->setRoute($host.$uri);
-        
+
         $route = $this->object->route();
         $this->assertEquals($host.$uri, $route);
     }

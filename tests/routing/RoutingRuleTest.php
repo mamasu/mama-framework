@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
 
 /*
  * This file is part of the Mamasu Framework package.
@@ -13,7 +11,7 @@ gc_disable();
  * The MmfRoutingRule class is where is configured a routing rule.
  *
  * @author Jepi Humet <jepi.humet@mamasu.es>
- * 
+ *
  */
 class RoutingRuleTest extends \PHPUnit_Framework_TestCase {
 
@@ -33,7 +31,7 @@ class RoutingRuleTest extends \PHPUnit_Framework_TestCase {
      */
     public function testRule() {
         $rule = new Mmf\Routing\RoutingRule("[a-z0-9]", "testcontroller", "testaction",
-                new Mmf\IO\RequestHtml(), 
+                new Mmf\IO\RequestHtml(),
                 new Mmf\IO\ResponseJson(), "testmethod");
 
         $this->assertEquals($rule->getRegularExpression(), "[a-z0-9]");

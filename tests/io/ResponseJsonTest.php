@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
+
 
 class ResponseJsonTest extends PHPUnit_Framework_TestCase {
 
@@ -12,7 +11,7 @@ class ResponseJsonTest extends PHPUnit_Framework_TestCase {
     public static function setUpBeforeClass() {
         //include_once __DIR__ . '/../include.php';
     }
-    
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.

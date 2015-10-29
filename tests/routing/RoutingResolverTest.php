@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/../../../vendor/autoload.php';
-gc_disable();
 
 /*
  * This file is part of the Mamasu Framework package.
@@ -10,11 +8,11 @@ gc_disable();
  */
 
 /**
- * The MmfRoutingResolver class is where is decided the route which has to be 
+ * The MmfRoutingResolver class is where is decided the route which has to be
  * chosen.
  *
  * @author Jepi Humet <jepi.humet@mamasu.es>
- * 
+ *
  */
 class RoutingResolverTest extends \PHPUnit_Framework_TestCase {
 
@@ -29,7 +27,7 @@ class RoutingResolverTest extends \PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     public static function setUpBeforeClass() {
-        self::$prefix = __DIR__ . '/../../../src/';
+        self::$prefix = __DIR__ . '/../../app/';
         //include_once __DIR__ . '/../include.php';
     }
 
@@ -187,31 +185,31 @@ class RoutingResolverTest extends \PHPUnit_Framework_TestCase {
     public function testBulkFileRouting() {
         print "\n==> TEST 10\n";
         $this->prepareRoutesTest("/routingtest/12/",
-                self::$prefix . "routing/routing.ini");
+                self::$prefix . "config/routing.ini");
         $rule1 = $this->routingResolver->resolve();
         $this->assertEquals($rule1->getRegularExpression(), "/routingtest/:id/");
 
         $this->prepareRoutesTest("/routingtest/12/test1",
-                self::$prefix . "routing/routing.ini");
+                self::$prefix . "config/routing.ini");
         $rule2 = $this->routingResolver->resolve();
         $this->assertEquals($rule2->getRegularExpression(),
                 "/routingtest/:id/:name/");
 
         $this->prepareRoutesTest("/routingtest/12/test1/this-is-a-test",
-                self::$prefix . "routing/routing.ini");
+                self::$prefix . "config/routing.ini");
         $rule3 = $this->routingResolver->resolve();
         $this->assertEquals($rule3->getRegularExpression(),
                 "/routingtest/:id/:name/:description/");
 
         $this->prepareRoutesTest("/routingtest/12/test1/this-is-a-test/",
-                self::$prefix . "routing/routing.ini");
+                self::$prefix . "config/routing.ini");
         $rule4 = $this->routingResolver->resolve();
         $this->assertEquals($rule4->getRegularExpression(),
                 "/routingtest/:id/:name/:description/");
 
         try {
             $this->prepareRoutesTest("/routingtest/12//my-test/",
-                    self::$prefix . "routing/routing.ini");
+                    self::$prefix . "config/routing.ini");
             $rule5 = $this->routingResolver->resolve();
             $this->assertEquals($rule5->getRegularExpression(),
                     "/routingtest/:id/:description/:name/");

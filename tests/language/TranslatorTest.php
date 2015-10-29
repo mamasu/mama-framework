@@ -11,16 +11,15 @@ class TranslatorTest extends PHPUnit_Framework_TestCase {
     protected $object;
 
     public static function setUpBeforeClass() {
-        include_once __DIR__ . '/../include.php';
     }
-    
+
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
     protected function setUp() {
-        $prefix = __DIR__ . '/../../../src/';
-        $this->object = new Mmf\Language\Translator('spa', $prefix.'language/translate/');
+        $prefix = __DIR__ . '/../../app/';
+        $this->object = new Mmf\Language\Translator('spa', $prefix.'translate/');
     }
 
     /**
@@ -28,7 +27,7 @@ class TranslatorTest extends PHPUnit_Framework_TestCase {
      * This method is called after a test is executed.
      */
     protected function tearDown() {
-        
+
     }
 
     /**
@@ -40,10 +39,10 @@ class TranslatorTest extends PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testPlainIdTranslate() {
-        $id = 'chicken';        
-        $this->assertEquals('pollo',$this->object->translate($id));        
+        $id = 'chicken';
+        $this->assertEquals('pollo',$this->object->translate($id));
     }
-    
+
     /**
      * @covers MmfTranslator::translate
      * @covers MmfTranslator::getTranslationForId
@@ -55,9 +54,9 @@ class TranslatorTest extends PHPUnit_Framework_TestCase {
     public function testReplaceIdTranslate() {
         $id = 'How is %name%';
         $parameters = array('%name%' => 'pepito');
-        $this->assertEquals('Quien es pepito',$this->object->translate($id, $parameters));        
+        $this->assertEquals('Quien es pepito',$this->object->translate($id, $parameters));
     }
-    
+
     /**
      * @covers MmfTranslator::translate
      * @covers MmfTranslator::getTranslationForId
