@@ -10,7 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Mmf\\": "Mmf/"
+            "Mmf\\": "Mmf/",
+            "": "app/"
         }
     },
     "minimum-stability": "dev",
