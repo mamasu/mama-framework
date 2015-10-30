@@ -1,25 +1,23 @@
 {
-    "name": "mmf/mmf",
-    "description": "Mamasu framework",
-    "type": "project",
+    "name": "mmf/framework",
+    "description": "The Mamasu framework",
     "authors": [
         {
             "name": "Xavier Casahuga",
             "email": "xavier@mamasu.es"
         }
     ],
-    "autoload": {
-        "psr-0": {
-            "": "app/"
-        },
-        "psr-4": {
-            "Mmf\\": "Mmf/",
-            "": "app/"
-        }
-    },
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mmf\\": "src/",
+            "": "app/"
+        }
     },
     "suggest": {
         "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~3.0).",
@@ -32,6 +30,7 @@
         "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
         "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
         "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0)."
-    }
+    },
+    "minimum-stability": "dev"
 
 }
