@@ -14,6 +14,6 @@ namespace Mmf\Routing;
  *
  * @author Jepi Humet
  */
-class RoutingException extends \Mmf\MVC\Exception {
+class RoutingException extends \Mmf\Controller\Exception {
     //put your code here
 }

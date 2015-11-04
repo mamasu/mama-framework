@@ -56,7 +56,7 @@ class LanguageDB implements LanguageInterface {
     public function __construct(
         \Mmf\IO\CommunicationInterface $communication,
         \Mmf\Parameter\ParametersInterface $config,
-        \Mmf\MVC\ConnectionInterface $connection = null
+        \Mmf\Model\ConnectionInterface $connection = null
     ) {
         //Inicialize the common objects for this class.
         $this->config        = $config;
@@ -73,7 +73,7 @@ class LanguageDB implements LanguageInterface {
 
         //Create the translate class for logical scripts.
         if(class_exists($translateClass)) {
-            
+
             $this->translate = new $translateClass($locale, $URLBase . $translatePath);
         }
     }

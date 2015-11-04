@@ -9,7 +9,7 @@
 
 namespace Mmf\Auth;
 
-use \Mmf\MVC\MySQLModelAbstract;
+use \Mmf\Model\MySQLModelAbstract;
 /**
  * The AuthModel.
  *

@@ -16,7 +16,7 @@ namespace Mmf\Language;
  * @author Xavier Casahuga <xavier.casahuga@mamasu.es>
  *
  */
-class TranslateException extends \Mmf\MVC\Exception {
+class TranslateException extends \Mmf\Controller\Exception {
 
     public function __construct($message, $code = 1800, Exception $previous = null) {
         parent::__construct($message, $code, $previous);

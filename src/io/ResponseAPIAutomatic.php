@@ -31,7 +31,7 @@ class ResponseAPIAutomatic implements ResponseInterface {
         if (class_exists($classResponseName)) {
             $this->responseObject = new $classResponseName();
         } else {
-            throw new \Mmf\MVC\Exception('Cannot create the response object, from automatic response object.');
+            throw new \Mmf\Controller\Exception('Cannot create the response object, from automatic response object.');
         }
     }
 

@@ -27,7 +27,7 @@ interface LanguageInterface {
     public function __construct(
         \Mmf\IO\CommunicationInterface $communication,
         \Mmf\Parameter\ParametersInterface $config,
-        \Mmf\MVC\ConnectionInterface $connection = null
+        \Mmf\Model\ConnectionInterface $connection = null
     );
 
     /**

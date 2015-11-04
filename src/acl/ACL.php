@@ -10,16 +10,16 @@
 namespace Mmf\ACL;
 
 use Mmf\Auth\AuthInterface;
-use Mmf\MVC\ConnectionInterface;
+use Mmf\Model\ConnectionInterface;
 use Mmf\Language\LanguageInterface;
 use Mmf\Routing\RoutingRuleAbstract;
 
 /**
  * The ACL is the class for all Access Control List, available
- * for Mamaframework. 
+ * for Mamaframework.
  *
  * @author Xavier Casahuga <xavier.casahuga@mamasu.es>
- * 
+ *
  */
 class ACL implements ACLInterface {
 
@@ -31,7 +31,7 @@ class ACL implements ACLInterface {
 
     /**
      *
-     * @var \Mmf\MVC\ConnectionInterface 
+     * @var \Mmf\Model\ConnectionInterface
      */
     private $connection;
 
@@ -43,42 +43,42 @@ class ACL implements ACLInterface {
 
     /**
      *
-     * @var ACLModel 
+     * @var ACLModel
      */
     private $aclModel;
 
     /**
      * Id role for the user.
-     * 
-     * @var int 
+     *
+     * @var int
      */
     private $roleId = NULL;
 
     /**
      * Id role for the user.
-     * 
-     * @var int 
+     *
+     * @var int
      */
     private $roleName = NULL;
 
     /**
      * Roles given from database.
-     * 
-     * @var array 
+     *
+     * @var array
      */
     private $rolesChain = NULL;
 
     /**
      * Roles adatped from database to normal form.
-     * 
-     * @var array 
+     *
+     * @var array
      */
     private $access = NULL;
 
     /**
      * Get the Session and Request Interfaces need to capture the user and
      * determine if is allowed or not.
-     * 
+     *
      * @param \Mmf\Auth\AuthInterface              $auth
      * @param \MmfConnectionInterface | null $connection
      * @param \MmfLanguageInterface   | null $language
@@ -96,14 +96,23 @@ class ACL implements ACLInterface {
     /**
      * Main Function, used to check if the request have autorization to access
      * into the controller and action required.
-     * 
+     *
      * @param \MmfRoutingRuleAbstract $routingRule
      * @return bool TRUE if the user is allow to execute the routing rule or
      * FALSE if the user is not allowed.
      */
     public function isAllowed(RoutingRuleAbstract $routingRule) {
-        $controller = str_ireplace("Controller", "",
-                $routingRule->getController());
+        $controller = str_ireplace("Controller", "",  $routingRule->getController());
+
+        //$function = new \ReflectionClass($routingRule->getController() . 'Controller');
+        /*
+        var_dump($function->inNamespace());
+        var_dump($function->getName());
+        var_dump($function->getNamespaceName());
+        var_dump($function->getShortName());
+         */
+        //$controller = str_ireplace("Controller", "", $function->getShortName());
+
         $action = $routingRule->getAction();
         $access = $this->getAccess();
         $allowed = FALSE;
@@ -146,7 +155,7 @@ class ACL implements ACLInterface {
 
     /**
      * Return a normal access array.
-     * 
+     *
      * @return array
      */
     private function getAccess() {
@@ -169,9 +178,9 @@ class ACL implements ACLInterface {
     }
 
     /**
-     * Get the list of roles chain. For example, if admin have user as parent 
+     * Get the list of roles chain. For example, if admin have user as parent
      * role, it returns the admin and user role.
-     * 
+     *
      * @return array
      */
     private function getRolesChain() {

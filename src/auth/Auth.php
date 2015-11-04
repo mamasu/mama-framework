@@ -84,11 +84,13 @@ class Auth implements AuthInterface {
      * @param \MmfParametersInterface $config
      * @param \MmfLanguageInterface   $language
      */
-    public function __construct(\Mmf\Parameter\SessionInterface $session = null,
-            \Mmf\IO\RequestInterface $request = null,
-            \Mmf\MVC\ ConnectionInterface $connection = null,
-            \Mmf\Parameter\ParametersInterface $config = null,
-            \Mmf\Language\LanguageInterface $language = null) {
+    public function __construct(
+        \Mmf\Parameter\SessionInterface $session = null,
+        \Mmf\IO\RequestInterface $request = null,
+        \Mmf\Model\ConnectionInterface $connection = null,
+        \Mmf\Parameter\ParametersInterface $config = null,
+        \Mmf\Language\LanguageInterface $language = null
+    ) {
         $this->session = $session;
         $this->request = $request;
         $this->connection = $connection;
@@ -102,8 +104,8 @@ class Auth implements AuthInterface {
     }
 
     private function initAuthModel(
-        \Mmf\Parameter\ParametersInterface $config = null, 
-        \Mmf\MVC\ ConnectionInterface $connection = null
+        \Mmf\Parameter\ParametersInterface $config = null,
+        \Mmf\Model\ConnectionInterface $connection = null
     ) {
         if ($config === null) {
             $this->authModel = new AuthModel($connection);

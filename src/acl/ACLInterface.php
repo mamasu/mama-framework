@@ -10,7 +10,7 @@
 namespace Mmf\ACL;
 
 use Mmf\Auth\AuthInterface;
-use Mmf\MVC\ConnectionInterface;
+use Mmf\Model\ConnectionInterface;
 use Mmf\Language\LanguageInterface;
 use Mmf\Routing\RoutingRuleAbstract;
 

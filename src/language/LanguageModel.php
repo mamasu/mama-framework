@@ -9,7 +9,7 @@
 
 namespace Mmf\Language;
 
-use \Mmf\MVC\MySQLModelAbstract;
+use \Mmf\Model\MySQLModelAbstract;
 /**
  * The LanguageModel, check the default user language.
  *

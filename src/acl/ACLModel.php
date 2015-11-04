@@ -9,7 +9,7 @@
 
 namespace Mmf\ACL;
 
-use Mmf\MVC\MySQLModelAbstract;
+use Mmf\Model\MySQLModelAbstract;
 /**
  * The ACLInterface is the interface for all Access Control List, available
  * for Mamaframework.

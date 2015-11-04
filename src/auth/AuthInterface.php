@@ -26,7 +26,7 @@ interface AuthInterface {
      */
     public function __construct(\Mmf\Parameter\SessionInterface $session = null,
             \Mmf\IO\RequestInterface $request = null,
-            \Mmf\MVC\ConnectionInterface $connection = null,
+            \Mmf\Model\ConnectionInterface $connection = null,
             \Mmf\Parameter\ParametersInterface $config = null,
             \Mmf\Language\LanguageInterface $language = null);
 

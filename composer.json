@@ -7,8 +7,18 @@
             "email": "xavier@mamasu.es"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://localhost:4680"
+        }
+    ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "mmf/parameter": "0.0.*",
+        "mmf/event": "0.0.*",
+        "mmf/log": "0.0.*",
+        "mmf/autoloader": "0.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"
@@ -16,7 +26,7 @@
     "autoload": {
         "psr-4": {
             "Mmf\\": "src/",
-            "": "app/"
+            "App\\": "app/"
         }
     },
     "suggest": {

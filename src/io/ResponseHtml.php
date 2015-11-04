@@ -24,7 +24,7 @@ class ResponseHtml implements ResponseInterface {
      * @return string
      */
     public function formatResponse($response) {
-        if (is_object($response) && is_a($response, '\Mmf\MVC\BasicViewInterface')) {
+        if (is_object($response) && is_a($response, '\Mmf\View\BasicViewInterface')) {
             //Is a view
             $return = $response->getContentWithTemplate();
         } else if (is_string($response)) {
@@ -46,7 +46,7 @@ class ResponseHtml implements ResponseInterface {
      */
     public function formatResponseBad($response) {
         //TODO replace.
-        if (is_object($response) && is_a($response, '\Mmf\MVC\BasicViewInterface')) {
+        if (is_object($response) && is_a($response, '\Mmf\View\BasicViewInterface')) {
             //Is a view
             $return = $response->getContentWithTemplate();
         } else if (is_string($response)) {

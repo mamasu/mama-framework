@@ -16,7 +16,7 @@ namespace Mmf\Auth;
  * @author Xavier Casahuga <xavier.casahuga@mamasu.es>
  *
  */
-class AuthException extends \Mmf\MVC\Exception {
+class AuthException extends \Mmf\Controller\Exception {
 
     public function __construct($message, $code = 0, Exception $previous = null) {
         parent::__construct($message, $code, $previous);

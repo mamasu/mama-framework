@@ -4,9 +4,138 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "14d77998263082cc0ad5ef96300731d8",
-    "content-hash": "eb9b195f139f91a423768feb369d1063",
-    "packages": [],
+    "hash": "95f2ed6e935b1b1b3351947eef03f134",
+    "content-hash": "58b6ac413d3e9fd2c5aca2a900bade11",
+    "packages": [
+        {
+            "name": "mmf/autoloader",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-autoloader.git",
+                "reference": "169d506e1d361a6f921027f6e336fa8934ddfed4"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://localhost:4680/dist/mmf-autoloader-0.0.1-e5f78e.tar",
+                "reference": "169d506e1d361a6f921027f6e336fa8934ddfed4",
+                "shasum": "d62d9d64e87d088c2454f9e53389b8da3ae9b0fb"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Autoloader\\": "src/autoloader"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Autoloader package",
+            "time": "2015-11-03 12:32:50"
+        },
+        {
+            "name": "mmf/event",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-event.git",
+                "reference": "817d07c60a58626b2c3b898cd3cf2108946d7e74"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://localhost:4680/dist/mmf-event-0.0.2-eb8ee0.tar",
+                "reference": "817d07c60a58626b2c3b898cd3cf2108946d7e74",
+                "shasum": "493cf17d1914c61cd642821699f6611f0a0fab41"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Event\\": "src/event"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Event Package",
+            "time": "2015-11-03 12:35:01"
+        },
+        {
+            "name": "mmf/log",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-log.git",
+                "reference": "b3d86a2ea827a6e7c9cfbedfc7c9228f304cc17b"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://localhost:4680/dist/mmf-log-0.0.2-59ca22.tar",
+                "reference": "b3d86a2ea827a6e7c9cfbedfc7c9228f304cc17b",
+                "shasum": "1413abdf7437f6a83f16042765112a67d8423b81"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Log\\": "src/log"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Log package",
+            "time": "2015-11-03 12:35:24"
+        },
+        {
+            "name": "mmf/parameter",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-parameter.git",
+                "reference": "86994e90dbc6a111360aebafb2775d8031916c70"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://localhost:4680/dist/mmf-parameter-0.0.2-681609.tar",
+                "reference": "86994e90dbc6a111360aebafb2775d8031916c70",
+                "shasum": "28ec50f4319f689ca744f43f3b3d25c455117a10"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Parameter\\": "src/parameter"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Parameter package",
+            "time": "2015-11-03 12:34:38"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -917,12 +1046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "027120898d49f642f9e71b06efcd2560b5a9bb09"
+                "reference": "29dee11bd37eae3de68b5113dc4b84dc8e2b786e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/027120898d49f642f9e71b06efcd2560b5a9bb09",
-                "reference": "027120898d49f642f9e71b06efcd2560b5a9bb09",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/29dee11bd37eae3de68b5113dc4b84dc8e2b786e",
+                "reference": "29dee11bd37eae3de68b5113dc4b84dc8e2b786e",
                 "shasum": ""
             },
             "require": {
@@ -937,7 +1066,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Yaml\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -955,7 +1087,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-10-29 12:12:54"
+            "time": "2015-11-02 20:34:04"
         }
     ],
     "aliases": [],
