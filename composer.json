@@ -27,7 +27,11 @@
         "psr-4": {
             "Mmf\\": "src/"
         }
-    },    
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
     "minimum-stability": "dev"
-
 }

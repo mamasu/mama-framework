@@ -24,7 +24,7 @@ class MySQLModelAbstractTest extends \PHPUnit_Framework_TestCase {
 
         $config->method('get')
                ->will($this->returnCallback('callbackConfigModelAbstract'));
-        $this->connection = new Mmf\Model\PDO($config);
+        $this->connection = new \Mmf\Model\PDO($config);
     }
 
     public function tearDown() {

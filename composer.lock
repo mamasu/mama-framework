@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "95f2ed6e935b1b1b3351947eef03f134",
-    "content-hash": "58b6ac413d3e9fd2c5aca2a900bade11",
+    "hash": "8531a081fab316cc0db77cb775a1b016",
+    "content-hash": "3bbbe87f2f221ccce63d8524ec0f008d",
     "packages": [
         {
             "name": "mmf/autoloader",
             "version": "0.0.1",
             "source": {
                 "type": "git",
-                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-autoloader.git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Autoloader.git",
                 "reference": "169d506e1d361a6f921027f6e336fa8934ddfed4"
             },
             "dist": {
@@ -44,7 +44,7 @@
             "version": "0.0.2",
             "source": {
                 "type": "git",
-                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-event.git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Event.git",
                 "reference": "817d07c60a58626b2c3b898cd3cf2108946d7e74"
             },
             "dist": {
@@ -76,7 +76,7 @@
             "version": "0.0.2",
             "source": {
                 "type": "git",
-                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-log.git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Log.git",
                 "reference": "b3d86a2ea827a6e7c9cfbedfc7c9228f304cc17b"
             },
             "dist": {
@@ -108,7 +108,7 @@
             "version": "0.0.2",
             "source": {
                 "type": "git",
-                "url": "https://daniel.chaur:Mamasu09@git.mamasulabs.com/daniel.chaur/mmf-parameter.git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Parameter.git",
                 "reference": "86994e90dbc6a111360aebafb2775d8031916c70"
             },
             "dist": {
@@ -546,12 +546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e"
+                "reference": "9f57eb4797ad108d8dde64313d3d96e24347b81a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/625f8c345606ed0f3a141dfb88f4116f0e22978e",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9f57eb4797ad108d8dde64313d3d96e24347b81a",
+                "reference": "9f57eb4797ad108d8dde64313d3d96e24347b81a",
                 "shasum": ""
             },
             "require": {
@@ -610,7 +610,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-23 06:48:33"
+            "time": "2015-11-04 15:12:39"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
