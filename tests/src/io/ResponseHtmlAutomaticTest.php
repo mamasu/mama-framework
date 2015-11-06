@@ -31,7 +31,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -44,7 +44,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -69,7 +69,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -82,7 +82,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponseBad
+     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -96,7 +96,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponseBad
+     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
      * @group io
      * @group modules
      * @group development

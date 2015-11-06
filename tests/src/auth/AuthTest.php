@@ -40,7 +40,7 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
-     * @covers MmfAuth::__construct
+     * @covers \Mmf\Auth\Auth::__construct
      */
     protected function setUp() {
         /* Create user guess */
@@ -99,10 +99,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::isAuthenticated
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::getUsername
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::isAuthenticated
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::getUsername
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -117,9 +117,9 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getUsername
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::getUsername
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -133,10 +133,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getRoleName
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::authenticate
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::getRoleName
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -150,10 +150,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getUserId
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::authenticate
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::getUserId
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -167,10 +167,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setUsername
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::authenticate
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::setUsername
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -188,10 +188,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setRoleName
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::authenticate
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::setRoleName
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -209,10 +209,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setRoleName
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::authenticate
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::setRoleName
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules
@@ -230,8 +230,8 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::logout
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::logout
      * @group auth
      * @group db
      * @group modules

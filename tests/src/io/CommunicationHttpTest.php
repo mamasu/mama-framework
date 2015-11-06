@@ -28,7 +28,7 @@ class CommunicationHttpTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfCommunicationHttp::route
+     * @covers \Mmf\IO\CommunicationHttp::route
      * @group io
      * @group modules
      * @group development
@@ -45,7 +45,7 @@ class CommunicationHttpTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfCommunicationHttp::setRoute
+     * @covers \Mmf\IO\CommunicationHttp::setRoute
      * @group io
      * @group modules
      * @group development

@@ -29,7 +29,7 @@ class ResponseJsonTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseJson::formatResponse
+     * @covers \Mmf\IO\ResponseJson::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -42,7 +42,7 @@ class ResponseJsonTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseJson::formatResponseBad
+     * @covers \Mmf\IO\ResponseJson::formatResponseBad
      * @group io
      * @group modules
      * @group development

@@ -6,7 +6,7 @@
 class SessionFactoryTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @var MmfSessionFactory
+     * @var \Mmf\Parameter\SessionFactory
      */
     protected $object;
 
@@ -30,7 +30,7 @@ class SessionFactoryTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfSessionFactory::createMmfSession
+     * @covers \Mmf\Parameter\SessionFactory::createSession
      * @group parameter
      * @group modules
      * @group development

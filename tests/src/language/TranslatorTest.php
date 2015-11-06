@@ -6,7 +6,7 @@
 class TranslatorTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @var MmfTranslator
+     * @var \Mmf\Language\Translator
      */
     protected $object;
 
@@ -31,8 +31,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::translate
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -44,8 +44,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::translate
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -58,8 +58,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::translate
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -73,8 +73,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::translateChoice
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::translateChoice
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -87,8 +87,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::setLocale
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::setLocale
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -100,8 +100,8 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfTranslator::getLocale
-     * @covers MmfTranslator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getLocale
+     * @covers \Mmf\Language\Translator::getTranslationForId
      * @group translate
      * @group modules
      * @group development

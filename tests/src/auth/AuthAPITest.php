@@ -35,7 +35,7 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::__construct
      */
     protected function setUp() {
         $requestguest = $this->getMockBuilder('Mmf\IO\RequestInterface')
@@ -91,9 +91,9 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::isAuthenticated
-     * @covers MmfAuth::__construct
-     * @covers MmfAuth::getUsername
+     * @covers  \Mmf\Auth\Auth::isAuthenticated
+     * @covers  \Mmf\Auth\Auth::__construct
+     * @covers  \Mmf\Auth\Auth::getUsername
      * @group auth
      * @group db
      * @group modules
@@ -107,10 +107,10 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::isAuthenticated
-     * @covers MmfAuth::__construct
-     * @covers MmfAuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
-     * @covers MmfAuthModel::getRoleAndUserFromToken
+     * @covers  \Mmf\Auth\Auth::isAuthenticated
+     * @covers  \Mmf\Auth\Auth::__construct
+     * @covers  \Mmf\Auth\AuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
+     * @covers  \Mmf\Auth\AuthModel::getRoleAndUserFromToken
      * @group auth
      * @group db
      * @group modules
@@ -150,10 +150,10 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::isAuthenticated
-     * @covers MmfAuth::__construct
-     * @covers MmfAuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
-     * @covers MmfAuthModel::getRoleAndUserFromToken
+     * @covers  \Mmf\Auth\Auth::isAuthenticated
+     * @covers  \Mmf\Auth\Auth::__construct
+     * @covers  \Mmf\Auth\AuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
+     * @covers  \Mmf\Auth\AuthModel::getRoleAndUserFromToken
      * @group auth
      * @group db
      * @group modules
@@ -192,11 +192,11 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::isAuthenticated
-     * @covers MmfAuth::__construct
-     * @covers MmfAuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
-     * @covers MmfAuthModel::getRoleAndUserFromToken
-     * @covers MmfAuthModel::updateExpireDate
+     * @covers  \Mmf\Auth\Auth::isAuthenticated
+     * @covers  \Mmf\Auth\Auth::__construct
+     * @covers  \Mmf\Auth\AuthAPI::checkIfTokenIsValidAndUpdateTheExpireDate
+     * @covers  \Mmf\Auth\AuthModel::getRoleAndUserFromToken
+     * @covers  \Mmf\Auth\AuthModel::updateExpireDate
      * @group auth
      * @group db
      * @group modules
@@ -230,8 +230,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getUsername
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::getUsername
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -245,8 +245,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getRoleName
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::getRoleName
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -260,8 +260,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::getUserId
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::getUserId
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -275,8 +275,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setUsername
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::setUsername
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -294,8 +294,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setRoleName
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::setRoleName
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -313,8 +313,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuth::setRoleName
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\Auth::setRoleName
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
@@ -332,8 +332,8 @@ class AuthAPITest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfAuthAPI::setDefaultLanguage
-     * @covers MmfAuth::__construct
+     * @covers  \Mmf\Auth\AuthAPI::setDefaultLanguage
+     * @covers  \Mmf\Auth\Auth::__construct
      * @group auth
      * @group db
      * @group modules
