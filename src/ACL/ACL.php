@@ -1,5 +1,5 @@
 <?php
-
+//test comment
 /*
  * This file is part of the Mamasu Framework package.
  *
@@ -194,10 +194,8 @@ class ACL implements ACLInterface {
             }
 
             $this->rolesChain = array_reverse($chain);
-            return $this->rolesChain;
-        } else {
-            return $this->rolesChain;
         }
+        return $this->rolesChain;
     }
 
 }

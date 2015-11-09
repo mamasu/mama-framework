@@ -65,7 +65,7 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
                 ->will($this->returnCallback('callbackConfigACL'));
 
         $this->connection = new \Mmf\Model\PDO($config);
-
+        //include_once('/Users/mamasuagency/develop/Mamasu_Web_Framework/src/acl/ACL.php');
         $this->objectguest       = new ACL($authguest, $this->connection);
         $this->objectUser        = new ACL($authUser, $this->connection);
         $this->objectAdmin       = new ACL($authAdmin, $this->connection);
@@ -80,11 +80,6 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL\ACL::isAllowed
-     * @covers \Mmf\ACL\ACL::__construct
-     * @covers \Mmf\ACL\ACL::forceRole
-     * @covers \Mmf\ACL\ACL::getAccess
-     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -385,7 +380,111 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertEquals($exceptionThrowIT, 'no exception throw it');
     }
+
+    /**
+     * @covers \Mmf\ACL\ACLException
+     * @group acl
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testException() {
+        $message = 'test new acl excepiton';
+        try {
+            throw new \Mmf\ACL\ACLException($message);
+        } catch(Exception $e) {
+            $this->assertEquals($e->getMessage(), $message, 'The message is not the same');
+        }
+    }
+
+    /**
+     * @covers \Mmf\ACL\ACLModel
+     * @group acl
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetBadRole() {
+        $aclModel = new Mmf\ACL\ACLModel($this->connection);
+        $role = $aclModel->getConcreteRole('no existe');
+        $this->assertEquals(false, $role, 'get a non existing role');
+    }
+
+    /**
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
+     * @group acl
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testNegativeCase() {
+        $routingRule = $this->getMockBuilder('Mmf\Routing\RoutingRuleAbstract')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getRegularExpression', 'getController',
+                'getAction', 'getInput', 'getOutput',
+                'setRegularExpression', 'setController',
+                'setAction', 'setInput', 'setOutput', 'getMethod',
+                'setMethod'))
+            ->getMock();
+
+        $routingRule->expects($this->any())
+            ->method('getController')
+            ->willReturn('Product');
+
+        $routingRule->expects($this->any())
+            ->method('getAction')
+            ->willReturn('show');
+
+        $allowed = $this->objectUser->isAllowed($routingRule);
+        $this->assertEquals(false, $allowed);
+    }
+
+
+    /**
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
+     * @group acl
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testDoubleCheckAccessNegativeCase() {
+        $routingRule = $this->getMockBuilder('Mmf\Routing\RoutingRuleAbstract')
+            ->disableOriginalConstructor()
+            ->setMethods(array('getRegularExpression', 'getController',
+                'getAction', 'getInput', 'getOutput',
+                'setRegularExpression', 'setController',
+                'setAction', 'setInput', 'setOutput', 'getMethod',
+                'setMethod'))
+            ->getMock();
+
+        $routingRule->expects($this->any())
+            ->method('getController')
+            ->willReturn('Product');
+
+        $routingRule->expects($this->any())
+            ->method('getAction')
+            ->willReturn('show');
+
+        $allowed = $this->objectUser->isAllowed($routingRule);
+        $this->assertEquals(false, $allowed);
+
+        $allowed = $this->objectUser->isAllowed($routingRule);
+        $this->assertEquals(false, $allowed);
+    }
 }
+
 
 function callbackSessionguestACL() {
     $functionArguments = func_get_args();
