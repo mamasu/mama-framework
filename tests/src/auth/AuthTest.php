@@ -32,6 +32,21 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
      */
     protected $objectUserN;
 
+    /**
+     * @var Mmf\Model\ConnectionInterface
+     */
+    protected $connection;
+
+    /**
+     * @var Mmf\Parameter\SessionInterface
+     */
+    protected $sessionGuest;
+
+    /**
+     * @var Mmf\Parameter\ParametersInterface
+     */
+    protected $config;
+
     public static function setUpBeforeClass() {
         //include_once __DIR__ . '/../include.php';
         include_once __DIR__ . '/../include.common.functions.php';
@@ -44,10 +59,10 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
      */
     protected function setUp() {
         /* Create user guess */
-        $sessionguest = $this->getMockBuilder('Mmf\Parameter\SessionInterface')
+        $this->sessionGuest = $this->getMockBuilder('Mmf\Parameter\SessionInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        $sessionguest->method('get')
+        $this->sessionGuest->method('get')
                 ->will($this->returnCallback('callbackSessionguestAuth'));
         /* End Create user guess */
 
@@ -75,19 +90,19 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
                 ->will($this->returnCallback('callbackSessionUserNoDatabaseAuth'));
         /* End Create user admin */
 
-        $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
+        $this->config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
                 ->disableOriginalConstructor()
                 ->getMock();
-        $config->method('get')
+        $this->config->method('get')
                 ->will($this->returnCallback('callbackConfigAuth'));
 
 
-        $connection = new MmfPDO($config);
+        $this->connection = new MmfPDO($this->config);
 
-        $this->objectguest         = new Auth($sessionguest, null, $connection);
-        $this->objectUser          = new Auth($sessionUser, null, $connection);
-        $this->objectAdmin         = new Auth($sessionAdmin, null, $connection);
-        $this->objectUserDBNoExist = new Auth($sessionUserDBNoExist, null, $connection);
+        $this->objectguest         = new Auth($this->sessionGuest, null, $this->connection);
+        $this->objectUser          = new Auth($sessionUser, null, $this->connection);
+        $this->objectAdmin         = new Auth($sessionAdmin, null, $this->connection);
+        $this->objectUserDBNoExist = new Auth($sessionUserDBNoExist, null, $this->connection);
     }
 
     /**
@@ -150,6 +165,23 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Auth\Auth::getRoleId
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetRoleID() {
+        $this->assertEquals('1', $this->objectguest->getRoleId());
+        $this->assertEquals('2', $this->objectUser->getRoleId());
+        $this->assertEquals('3', $this->objectAdmin->getRoleId());
+    }
+
+    /**
      * @covers \Mmf\Auth\Auth::getUserId
      * @covers \Mmf\Auth\Auth::__construct
      * @covers \Mmf\Auth\Auth::authenticate
@@ -209,7 +241,29 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\Auth\Auth::setRoleName
+     * @covers \Mmf\Auth\Auth::setRoleId
+     * @covers \Mmf\Auth\Auth::getRoleId
+     * @covers \Mmf\Auth\Auth::__construct
+     * @covers \Mmf\Auth\Auth::authenticate
+     * @covers \Mmf\Auth\Auth::logout
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testSetRoleId() {
+        $this->objectguest->setRoleId('1');
+        $this->objectUser->setRoleId('2');
+        $this->objectAdmin->setRoleId('3');
+
+        $this->assertEquals('1', $this->objectguest->getRoleId());
+        $this->assertEquals('2', $this->objectUser->getRoleId());
+        $this->assertEquals('3', $this->objectAdmin->getRoleId());
+    }
+
+    /**
+     * @covers \Mmf\Auth\Auth::setUserId
      * @covers \Mmf\Auth\Auth::__construct
      * @covers \Mmf\Auth\Auth::authenticate
      * @covers \Mmf\Auth\Auth::logout
@@ -243,6 +297,67 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         $this->objectAdmin->logout();
         $this->assertEquals(false,  $this->objectUser->isAuthenticated());
         $this->assertEquals(false,  $this->objectAdmin->isAuthenticated());
+    }
+
+    /**
+     * @covers \Mmf\Auth\Auth::initAuthModel
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testInitAuthWithAutomaticModel() {
+        $auth = new Auth($this->sessionGuest, null, $this->connection);
+        $this->assertNotEmpty($auth);
+    }
+
+    /**
+     * @covers \Mmf\Auth\Auth::initAuthModel
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testInitAuthWithConfigModel() {
+        $auth = new Auth($this->sessionGuest, null, $this->connection, $this->config);
+        $this->assertNotEmpty($auth);
+    }
+
+    /**
+     * @covers \Mmf\Auth\Auth::initAuthModel
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testInitAuthWithConfigModelWithoutModelClass() {
+        $config = $this->getMockBuilder('Mmf\Parameter\ParametersInterface')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $config->method('get')
+            ->will($this->returnCallback('callbackConfigAuthWithoutAuthModelClass'));
+        $auth = new Auth($this->sessionGuest, null, $this->connection, $config);
+        $this->assertNotEmpty($auth);
+    }
+
+    /**
+     * @covers \Mmf\Auth\AuthException
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testAuthException() {
+        $message = 'testmessage';
+        try {
+            $authException = new \Mmf\Auth\AuthException($message);
+        } catch (Exception $e) {
+            $this->assertEquals($e->getMessage(), $message, 'Exception message not match');
+        }
     }
 
 }
@@ -281,6 +396,17 @@ function callbackConfigAuth() {
     $conection2 = array('host' => 'localhost', 'port' => '8889', 'name' => 'marketplace1',
         'user' => 'root', 'pass' => 'root');
 
-    $return = array('db_default' => $conection1, 'db_secondary' => $conection2);
+    $return = array('db_default' => $conection1, 'db_secondary' => $conection2, 'auth' => ['authModelClass' => "\\Mmf\\Auth\\AuthModel"]);
+    return $return[$functionArguments[0]];
+}
+
+function callbackConfigAuthWithoutAuthModelClass() {
+    $functionArguments = func_get_args();
+    $conection1 = array('host' => 'localhost', 'port' => '8889', 'name' => 'marketplace',
+        'user' => 'root', 'pass' => 'root');
+    $conection2 = array('host' => 'localhost', 'port' => '8889', 'name' => 'marketplace1',
+        'user' => 'root', 'pass' => 'root');
+
+    $return = array('db_default' => $conection1, 'db_secondary' => $conection2, 'auth' => []);
     return $return[$functionArguments[0]];
 }
