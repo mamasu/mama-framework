@@ -70,7 +70,7 @@ class PDO implements ConnectionInterface{
 
             return $connection;
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw new ModelException('Error trying to connect to db');
         }
     }
