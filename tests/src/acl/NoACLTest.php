@@ -58,7 +58,7 @@ class NoACLTest extends \PHPUnit_Framework_TestCase {
                 ->getMock();
 
         $config->method('get')
-                ->will($this->returnCallback('callbackConfigACL'));
+                ->will($this->returnCallback('callbackConfigNoACL'));
 
         $this->connection = new \Mmf\Model\PDO($config);
 
@@ -231,7 +231,7 @@ class NoACLTest extends \PHPUnit_Framework_TestCase {
     }
 }
 
-function callbackConfigACL() {
+function callbackConfigNoACL() {
     $functionArguments = func_get_args();
     $conection1 = array('host' => 'localhost', 'port' => '8889', 'name' => 'marketplace',
         'user' => 'root', 'pass' => 'root');
