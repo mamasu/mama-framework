@@ -80,11 +80,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -114,11 +114,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -148,11 +148,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -182,11 +182,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -216,11 +216,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -250,11 +250,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -284,11 +284,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -318,11 +318,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules
@@ -352,11 +352,11 @@ class ACLTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\ACL::isAllowed
-     * @covers \Mmf\ACL::__construct
-     * @covers \Mmf\ACL::forceRole
-     * @covers \Mmf\ACL::getAccess
-     * @covers \Mmf\ACL::getRolesChain
+     * @covers \Mmf\ACL\ACL::isAllowed
+     * @covers \Mmf\ACL\ACL::__construct
+     * @covers \Mmf\ACL\ACL::forceRole
+     * @covers \Mmf\ACL\ACL::getAccess
+     * @covers \Mmf\ACL\ACL::getRolesChain
      * @group acl
      * @group db
      * @group modules

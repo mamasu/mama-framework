@@ -6,7 +6,7 @@
 class MmfSessionTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @var MmfSession
+     * @var \Mmf\Parameter\Session
      */
     protected $object;
 
@@ -30,7 +30,7 @@ class MmfSessionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfSession::setFlashVar
+     * @covers \Mmf\Parameter\Session::setFlashVar
      * @group parameter
      * @group modules
      * @group development
@@ -43,7 +43,7 @@ class MmfSessionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfSession::removeFlashVar
+     * @covers \Mmf\Parameter\Session::removeFlashVar
      * @group parameter
      * @group modules
      * @group development

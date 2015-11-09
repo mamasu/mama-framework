@@ -30,7 +30,7 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -43,7 +43,7 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -68,7 +68,7 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponse
      * @group io
      * @group modules
      * @group development

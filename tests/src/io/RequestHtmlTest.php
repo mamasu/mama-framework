@@ -32,7 +32,7 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers RequestHtml::input
+     * @covers \Mmf\IO\RequestHtml::input
      * @group io
      * @group modules
      * @group development
@@ -60,7 +60,7 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers RequestHtml::setInput
+     * @covers \Mmf\IO\RequestHtml::setInput
      * @group io
      * @group modules
      * @group development
@@ -84,7 +84,7 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfRequestHtml::filterVar
+     * @covers \Mmf\IO\RequestHtml::filterVar
      * @group io
      * @group modules
      * @group development

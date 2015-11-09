@@ -28,7 +28,7 @@ class CommunicationTerminalTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfCommunicationHttp::route
+     * @covers \Mmf\IO\CommunicationTerminal::route
      * @group io
      * @group modules
      * @group development
@@ -39,7 +39,7 @@ class CommunicationTerminalTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers MmfCommunicationHttp::setRoute
+     * @covers \Mmf\IO\CommunicationTerminal::setRoute
      * @group io
      * @group modules
      * @group development

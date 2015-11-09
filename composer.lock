@@ -1,0 +1,143 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "b6ad0b4dc986dd595dad90d62b0b35bf",
+    "content-hash": "6423e3a8c6b98ca56c722c3f8bd55d79",
+    "packages": [
+        {
+            "name": "mmf/autoloader",
+            "version": "0.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Autoloader.git",
+                "reference": "1895ee01bd350e829875f870a9e2c86f943b2882"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://repo.mamasulabs.com//dist/mmf-autoloader-0.0.7-f864f9.tar",
+                "reference": "1895ee01bd350e829875f870a9e2c86f943b2882",
+                "shasum": "129446cd17965fc555fee66737af460d93987f2b"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Autoloader\\": "src/autoloader"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Autoloader package",
+            "time": "2015-11-06 11:47:42"
+        },
+        {
+            "name": "mmf/event",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Event.git",
+                "reference": "b1002c15c03f43d65a16c2efcb54891f3a67fa13"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://repo.mamasulabs.com//dist/mmf-event-0.0.3-3e37aa.tar",
+                "reference": "b1002c15c03f43d65a16c2efcb54891f3a67fa13",
+                "shasum": "3060c10bd2a33e6bdc3b8ad1b37730e2047ed5ff"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Event\\": "src/event"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Event Package",
+            "time": "2015-11-06 14:41:23"
+        },
+        {
+            "name": "mmf/log",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Log.git",
+                "reference": "b3d86a2ea827a6e7c9cfbedfc7c9228f304cc17b"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://repo.mamasulabs.com//dist/mmf-log-0.0.2-59ca22.tar",
+                "reference": "b3d86a2ea827a6e7c9cfbedfc7c9228f304cc17b",
+                "shasum": "05deda69132abe4c575b26446b3ebfe01adb942c"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Log\\": "src/log"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Log package",
+            "time": "2015-11-03 12:35:24"
+        },
+        {
+            "name": "mmf/parameter",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://xavier.casahuga:Mamasita20952@git.mamasulabs.com/Mamaframework/Mamasu_Web_Parameter.git",
+                "reference": "86994e90dbc6a111360aebafb2775d8031916c70"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://repo.mamasulabs.com//dist/mmf-parameter-0.0.2-681609.tar",
+                "reference": "86994e90dbc6a111360aebafb2775d8031916c70",
+                "shasum": "1c652d1a54051a2ae746c7feb3cdb1cba435e8ac"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mmf\\Parameter\\": "src/parameter"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Xavier Casahuga",
+                    "email": "xavier@mamasu.es"
+                }
+            ],
+            "description": "Mamasu Parameter package",
+            "time": "2015-11-03 12:34:38"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}
