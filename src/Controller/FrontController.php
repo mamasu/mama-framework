@@ -9,6 +9,9 @@
 
 namespace Mmf\Controller;
 
+use \Mmf\Routing\RoutingException;
+
+
 /**
  * Is the controller in charge of instantiate all the controllers, init
  * the basic configuration and call the method of controller that will respond
@@ -151,7 +154,6 @@ class FrontController {
 
         $this->errorController = $this->getLibraryInstance('mvc', 'errorClass'); //Create error controller.
         //TODO log
-        //$this->loadLibraryDirectory('io');
         try {
 
             return $this->createMVCAction(); //Load Event, Plugin, Language, Routing, Auth, ACL, View, and controllers.
@@ -169,7 +171,7 @@ class FrontController {
             /* @var $respAutoClass ResponseInterface */
             return $respAutoClass->formatResponseBad(['errorCode' => $e->getCode(),
                         'errorMessage' => $e->getMessage()]);
-        } catch (Exception $e) { //Catch not controlled errors
+        } catch (\Exception $e) { //Catch not controlled errors
             $this->executionErrors = 1;
             $this->messageErrors = 'File:' . $e->getFile() . ' File line:' . $e->getLine() . ', Message:' . $e->getMessage() . ', Traceroute:' . $e->getTraceAsString();
             $this->traceRouteErrors = $e->getTrace();
@@ -333,57 +335,6 @@ class FrontController {
     }
 
     /**
-     * Activate Plugin System if Event and Plugin are configure.
-     */
-    private function activatePlugin() {
-
-        //Get the locator Class from the config file, this will be needed
-        //when the plugin locator is based on DB
-        //Get the plugin locator instance
-        $this->pluginLocator = $this->getLibraryInstance('plugin', 'locatorClass', $this->Structure);
-
-        //Get the plugin manager instance
-        $this->pluginManager = $this->getLibraryInstance('plugin', 'pluginClass', $this->config, $this->autoload, $this->eventManager, $this->pluginLocator, $this->routingResolver);
-
-        //Init the plugins installed
-        $this->pluginManager->initPluginInstalled();
-    }
-
-    /**
-     * Dispatch the core event when all components are ready.
-     *
-     * @param mixed $properties
-     */
-    private function dispatchCoreReady($properties) {
-        if (array_search('event', $this->Libraries) != NULL) {
-            //Create Ready Event
-            $event = new EventCoreReady();
-            $event->properties = $properties; //Properties
-            //Dispatch  Framework ready event
-            $this->eventManager->dispatch($event);
-        }
-    }
-
-    /**
-     * Load the library directory
-     *
-     * @param string $libraryName
-     * @return bool
-     */
-    private function loadLibraryDirectory($libraryName) {
-        $paths = $this->config->get($libraryName)['paths'];
-        if ($paths) {
-            foreach ($paths as $path) {
-                $this->autoload->addNewAutoloadPath($path);
-            }
-            //Add the library into the Library
-            $this->Libraries[] = $libraryName;
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Return the instance of the library class.
      *
      * @param string $libraryName
@@ -395,7 +346,6 @@ class FrontController {
      */
     private function getLibraryInstance($libraryName, $libraryClass) {
         $instance = null;
-       // if ($this->loadLibraryDirectory($libraryName)) {
             $libraryClassName = $this->config->get($libraryName)[$libraryClass];
             if (class_exists($libraryClassName)) {
                 if (count(func_get_args()) > 2) {
@@ -410,7 +360,6 @@ class FrontController {
             } else {
                 throw new \InvalidArgumentException('Invalid library class(' . $libraryClassName . ')');
             }
-        //}
         throw new \InvalidArgumentException('We can not instantiate the library class (' . $libraryClassName . ')');
     }
 
@@ -511,7 +460,7 @@ class FrontController {
         if ($returnOfAction !== false) {
             return $returnOfAction;
         } else {
-            throw new CoreException('FrontController::callClassAndMethodWithInputArguments'
+            throw new \Mmf\Core\CoreException('FrontController::callClassAndMethodWithInputArguments'
             . ', Is not unable to call the action (' . $method . ') with '
             . 'the parameters(' . print_r($listOfParams, true) . '), the expected name of parameters are'
             . '(' . print_r($params, true) . ')');
@@ -540,20 +489,6 @@ class FrontController {
             $paramsArray[] = $auxParam;
         }
         return $paramsArray;
-    }
-
-    /**
-     * Ask if the request is ajax.
-     *
-     * @return bool
-     */
-    private function isAjaxRequest() {
-        $ajax = false;
-
-        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $ajax = true;
-        }
-        return $ajax;
     }
 
 }
