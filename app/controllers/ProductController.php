@@ -29,4 +29,15 @@ class ProductController extends \Mmf\Controller\BasicControllerAbstract {
         throw new \Mmf\Controller\ControllerException('Message of bad response '.$test);
     }
 
+    public function throwFrameworkException() {
+        throw new \Mmf\Controller\Exception('Framework exception', 1);
+    }
+
+    public function throwException() {
+        throw new \Exception('Framework exception', 1);
+    }
+
+    public function returnFalse() {
+        return false; //This kind of return is not valid
+    }
 }

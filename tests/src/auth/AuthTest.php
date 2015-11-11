@@ -360,6 +360,86 @@ class MmfAuthTest extends \PHPUnit_Framework_TestCase {
         }
     }
 
+    /**
+     * @covers \Mmf\Auth\AuthModel::updateExpireDate
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testUpdateExpireDate() {
+        $authModel = new \Mmf\Auth\AuthModel($this->connection);
+        $updateExpireDate = $authModel->updateExpireDate('tetagordanoexistetoken', '2015-01-01');
+        $this->assertEquals(false, $updateExpireDate, 'It updates the token :(');
+    }
+
+    /**
+     * @covers \Mmf\Auth\AuthModel::getRoleAndUserFromUsernamePassword
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetRoleAndUserFromUsernamePassword() {
+        $authModel = new \Mmf\Auth\AuthModel($this->connection);
+        $roleAndUser = $authModel->getRoleAndUserFromUsernamePassword('useruser', 'testpassword');
+        $this->assertArrayHasKey('username', $roleAndUser);
+        $this->assertArrayHasKey('id_user', $roleAndUser);
+        $this->assertArrayHasKey('name', $roleAndUser);
+        $this->assertArrayHasKey('id_role', $roleAndUser);
+        $this->assertArrayHasKey('id_parent', $roleAndUser);
+        $this->assertArrayHasKey('db_date', $roleAndUser);
+    }
+
+    /**
+     * @covers \Mmf\Auth\AuthModel::getRoleAndUserFromUsernamePassword
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetFalseRoleAndUserFromUsernamePassword() {
+        $authModel = new \Mmf\Auth\AuthModel($this->connection);
+        $roleAndUser = $authModel->getRoleAndUserFromUsernamePassword('userusernotexist', 'testpasswordblabla');
+        $this->assertEquals(false, $roleAndUser, 'The user exists');
+    }
+
+    /**
+     * @covers \Mmf\Auth\AuthModel::getRoleAndUserFromIdUser
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetRoleAndUserFromIdUser() {
+        $authModel = new \Mmf\Auth\AuthModel($this->connection);
+        $roleAndUser = $authModel->getRoleAndUserFromIdUser(1);
+        $this->assertArrayHasKey('username', $roleAndUser);
+        $this->assertArrayHasKey('id_user', $roleAndUser);
+        $this->assertArrayHasKey('name', $roleAndUser);
+        $this->assertArrayHasKey('id_role', $roleAndUser);
+        $this->assertArrayHasKey('id_parent', $roleAndUser);
+        $this->assertArrayHasKey('db_date', $roleAndUser);
+    }
+
+    /**
+     * @covers \Mmf\Auth\AuthModel::getRoleAndUserFromIdUser
+     * @group auth
+     * @group db
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetFalseRoleAndUserFromIdUser() {
+        $authModel = new \Mmf\Auth\AuthModel($this->connection);
+        $roleAndUser = $authModel->getRoleAndUserFromIdUser(-1);
+        $this->assertEquals(false, $roleAndUser, 'The user exists');
+    }
+
 }
 
 function callbackSessionguestAuth() {

@@ -218,9 +218,130 @@ class FrontControllerTest extends \PHPUnit_Framework_TestCase {
         $_GET['var'] = '';
         $_GET['token'] = '';
         $returnAction = $this->simulateFrontControllerRequest('/urlnotexist/', $_GET);
-        $this->assertEquals('{"success":false,"responseData":{"errorCode":1600,"errorMessage":"There is no rule resolving this route"}}', $returnAction);
-        //$this->assertEquals('{"success":false,"responseData":{"errorCode":1600,"errorMessage":"The URL not match with any of our defined routes"}}', $returnAction);
-        //$this->assertEquals ('{"success":false,"responseData":"ACL: User not allow to access"}',$returnAction);
+        $this->assertEquals('{"success":false,"responseData":{"errorCode":1600,"errorMessage":"The URL not match with any of our defined routes"}}', $returnAction);
+    }
+
+    /**
+     * TODO : finish error controller.
+     *
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testErrorController() {
+        $errorController = new \Mmf\Controller\ErrorController();
+        $errorController->displayError();
+        $this->assertEquals(true, true);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testEventCoreReady() {
+        try {
+            $eventCoreReady = new \Mmf\Controller\EventCoreReady();
+            $this->assertEquals(true, true);
+        } catch (Exception $e) {
+            $this->assertEquals(true, false, 'Fail on create event core ready');
+        }
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testThrowFrameworkException() {
+        $_GET['test'] = '';
+        $_GET['foo'] = '';
+        $_GET['var'] = '';
+        $_GET['token'] = 'tokenuser';
+        $returnAction = $this->simulateFrontControllerRequest('/throwframeworkexception/', $_GET);
+        $this->assertEquals('{"success":false,"responseData":{"errorCode":1,"errorMessage":"Framework exception"}}', $returnAction);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testThrowException() {
+        $_GET['test'] = '';
+        $_GET['foo'] = '';
+        $_GET['var'] = '';
+        $_GET['token'] = 'tokenuser';
+        try {
+            $returnAction = $this->simulateFrontControllerRequest ('/throwexception/', $_GET);
+        } catch (\Exception $e) {
+            $this->assertEquals ('TEST FAIL, loock at the Output window and check the ERROR FROM FRONT CONTROLLER TEXT', $e->getMessage());
+        }
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testNotExistingCoreClass() {
+        $_GET['test'] = '';
+        $_GET['foo'] = '';
+        $_GET['var'] = '';
+        $_GET['token'] = 'tokenuser';
+
+        $mvc = ['errorClass' => "\\Mmf\\Controller\\ErrorController",
+            'viewClass'       => "\\Mmf\\View\\BasicView",
+            'controllerClass' => "\\Mmf\\Controller\\BasicControllerAbstract",
+            'modelClass'      => "\\Mmf\Model\\MySQLModelAbstract",
+            'coreClass'      => "notExistingCoreClass",
+            'defaultRespHtml' => "\\Mmf\\IO\\ResponseHtml",
+            'defaultRespJson' => "\\Mmf\\IO\\ResponseJson",
+            'connectionClass' => "\\Mmf\\Model\\PDO",
+            'viewFolder'      => "/app/views/",
+            'installFolder'   => "http://mamaframeworks.com/"];
+
+        $returnAction = $this->simulateBadConfigFrontControllerRequest ('/throwexception/', $_GET, 'mvc', $mvc);
+        $this->assertEquals ('{"success":false,"responseData":{"errorCode":0,"errorMessage":"Internal Server Error"}}', $returnAction);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testFalseReturnOfController() {
+        $_GET['test'] = '';
+        $_GET['foo'] = '';
+        $_GET['var'] = '';
+        $_GET['token'] = 'tokenuser';
+
+        $returnAction = $this->simulateBadConfigFrontControllerRequest ('/return/false/', $_GET);
+        $this->assertEquals ('{"success":false,"responseData":{"errorCode":0,"errorMessage":"Internal Server Error"}}', $returnAction);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testBadLibraryClass() {
+        $_GET['test'] = '';
+        $_GET['foo'] = '';
+        $_GET['var'] = '';
+        $_GET['token'] = 'tokenuser';
+
+        $acl = ['aclClass' => "\Mmf\ACL\ACLnotasexist"];
+
+        $returnAction = $this->simulateBadConfigFrontControllerRequest ('/throwexception/', $_GET, 'acl', $acl);
+        $this->assertEquals ('{"success":false,"responseData":{"errorCode":0,"errorMessage":"Internal Server Error"}}', $returnAction);
     }
 
     /**
@@ -276,6 +397,65 @@ class FrontControllerTest extends \PHPUnit_Framework_TestCase {
             echo PHP_EOL.'-ERROR FROM FRONT CONTROLLER:'.$errorText.PHP_EOL;
             throw new \Exception('TEST FAIL, loock at the Output window and check the ERROR FROM FRONT CONTROLLER TEXT');
         }
+        return $returnAction;
+    }
+
+    /**
+     * Function to simulate End to End MmfRequest.
+     *
+     * @param type $url
+     * @param type $params
+     * @return type
+     * @throws Exception
+     */
+    public function simulateBadConfigFrontControllerRequest($url, $params, $configVarName = null, $configVarValue = null) {
+        unset($_GET);
+        $_GET = $params;
+        try {
+            $prefix = __DIR__ . '/../../..';
+            //Set error var to zero
+            $error = 0;
+
+            //Create the autoloader with the route base of the files
+            $autoloader = new \Mmf\Autoloader\Autoloader(array(), $prefix);
+            //Include the config path
+            //$autoloader->addNewAutoloadPath ('/mmf/parameter');
+
+            //Create the new Config
+            $config = new \Mmf\Parameter\Config();
+
+            //Create the new Communication
+            $communication = new \Mmf\IO\CommunicationHttp();
+            $communication->setRoute ($url);
+            $communication->setMethod ('GET');
+
+            //Create the new FrontController and pass the autoloader
+            $frontController = new \Mmf\Controller\FrontController($autoloader, $config, $communication);
+
+            $config->addConfigVars ($prefix . '/config/config.ini');
+
+
+
+            if ($configVarName !== null) {
+                $config->set($configVarName, $configVarValue);
+            }
+
+
+            //Execute the Main Function
+            $returnAction = $frontController->main ();
+
+            //Check if there is and error
+            $error = $frontController->executionErrors;
+            $errorText = $frontController->messageErrors;
+            $errortraceText = $frontController->traceRouteErrors;
+
+        } catch (\Exception $e) {
+            $this->assertEquals(true, $e->getMessage());
+            $errorText      = $e->getMessage().$e->getLine();
+            $errortraceText = $e->getTrace();
+            throw $e;
+        }
+
         return $returnAction;
     }
 }
