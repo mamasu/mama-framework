@@ -51,7 +51,18 @@ class CoreTest extends PHPUnit_Framework_TestCase {
             $auth
         );
 
-        $this->assertEquals(true, true);
+        $this->assertEquals(true, strpos(get_class($this->core->auth()),'AuthInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->autoloader()),'AutoloaderInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->config()),'ParametersInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->eventManager()),'EventManagerInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->request()),'RequestInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->response()),'ResponseInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->view()),'BasicViewInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->language()),'LanguageInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->router()),'RoutingResolverAbstract')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->error()),'ErrorControllerInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->session()),'SessionInterface')?true:false);
+        $this->assertEquals(true, strpos(get_class($this->core->connection()),'ConnectionInterface')?true:false);
 
         unset($this->core);
     }

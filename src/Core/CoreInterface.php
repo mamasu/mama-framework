@@ -72,11 +72,6 @@ interface CoreInterface {
     public function config();
 
     /**
-     * @return PluginManagerInterface
-     */
-    public function pluginManager();
-
-    /**
      * @return EventManagerInterface
      */
     public function eventManager();

@@ -154,13 +154,6 @@ class Core implements CoreInterface {
     }
 
     /**
-     * @return PluginManagerInterface
-     */
-    public function pluginManager() {
-        return $this->pluginManager;
-    }
-
-    /**
      * @return EventManagerInterface
      */
     public function eventManager() {
