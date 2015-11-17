@@ -60,4 +60,36 @@ class CommunicationHttpTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($host.$uri, $route);
     }
 
+    /**
+     * @covers \Mmf\IO\CommunicationHttp::setRoute
+     * @covers \Mmf\IO\CommunicationHttp::getHttpRoute
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testSetServer() {
+        $host                   = 'testhost1';
+        $uri                    = '/test.php?varname=asdf&varnmae2=asdf1';
+        $_SERVER['REQUEST_URI'] = $host.$uri;
+
+        $route = $this->object->route();
+        $this->assertEquals($host.$uri, $route);
+    }
+
+    /**
+     * @covers \Mmf\IO\CommunicationHttp::method
+     * @covers \Mmf\IO\CommunicationHttp::setMethod
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testMethod() {
+        $uri                    = '/test.php?varname=asdf&varnmae2=asdf1';
+
+        $this->object->setMethod($uri);
+        $this->assertEquals($uri, $this->object->method());
+    }
+
 }

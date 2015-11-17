@@ -31,7 +31,16 @@ class RequestHtml implements RequestInterface {
      */
     public function __construct() {
         if (function_exists('getallheaders')){
+            //TODO: create getallheaders functions for nginx
             $this->setBulkOfInputGivenArray(getallheaders());
+        } elseif(!empty($_SERVER)) {
+            $headers = '';
+            foreach ($_SERVER as $name => $value) {
+                if (substr($name, 0, 5) == 'HTTP_') {
+                    $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+                }
+            }
+            $this->setBulkOfInputGivenArray($headers);
         }
         $this->setBulkOfInputGivenArray($_POST);
         $this->setBulkOfInputGivenArray($_GET);

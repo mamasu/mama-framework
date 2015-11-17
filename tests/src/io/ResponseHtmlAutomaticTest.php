@@ -31,7 +31,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -44,7 +44,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -69,7 +69,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponse
      * @group io
      * @group modules
      * @group development
@@ -82,7 +82,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -96,7 +96,7 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -109,4 +109,44 @@ class ResponseHtmlAutomaticTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($response['errorMessage'], $responseFormat);
         $this->assertEquals(http_response_code(), 404);
     }
+
+    /**
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponseBad
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testFormatResponseBadAuthorization() {
+        $response = ['errorCode'    => 1500,
+            'errorMessage' => 'The URL not match with any of our defined routes'];
+        $responseFormat = $this->object->formatResponseBad($response);
+        $this->assertEquals($response['errorMessage'], $responseFormat);
+        $this->assertEquals(http_response_code(), 401);
+    }
+
+    /**
+     * @covers \Mmf\IO\ResponseHtmlAutomatic::formatResponseBad
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testFormatResponseBadDefault() {
+        $response = ['errorCode'    => 1700,
+            'errorMessage' => 'The URL not match with any of our defined routes'];
+        $responseFormat = $this->object->formatResponseBad($response);
+        $this->assertEquals($response['errorMessage'], $responseFormat);
+        $this->assertEquals(http_response_code(), 500);
+    }
+
+
+    public function testFormatResponseBadAjax() {
+        $response = 'aaa';
+        $_SERVER['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest';
+        $responseFormat = $this->object->formatResponseBad($response);
+        $this->assertEquals($response,$responseFormat);
+    }
+
+
 }

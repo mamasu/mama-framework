@@ -31,6 +31,7 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -39,11 +40,14 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
     public function testFormatResponseString() {
         $response = 'hola bon dia';
         $responseFormat = $this->object->formatResponse($response);
+        $responseFormatBad = $this->object->formatResponseBad($response);
         $this->assertEquals('hola bon dia', $responseFormat);
+        $this->assertEquals('hola bon dia', $responseFormatBad);
     }
 
     /**
      * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -64,11 +68,14 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
                ->willReturn($contentView);
 
         $responseFormat = $this->object->formatResponse($view);
+        $responseFormatBad = $this->object->formatResponseBad($view);
         $this->assertEquals($contentView, $responseFormat);
+        $this->assertEquals($contentView, $responseFormatBad);
     }
 
     /**
      * @covers \Mmf\IO\ResponseHtml::formatResponse
+     * @covers \Mmf\IO\ResponseHtml::formatResponseBad
      * @group io
      * @group modules
      * @group development
@@ -77,7 +84,9 @@ class ResponseHtmlTest extends \PHPUnit_Framework_TestCase {
     public function testFormatResponseArrayOrObject() {
         $response = array('hola bon dia');
         $responseFormat = $this->object->formatResponse($response);
+        $responseFormatBad = $this->object->formatResponseBad($response);
         $this->assertEquals(print_r($response,true), $responseFormat);
+        $this->assertEquals(print_r($response,true), $responseFormatBad);
     }
 
 }

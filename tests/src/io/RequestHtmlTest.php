@@ -16,8 +16,8 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
+     * @covers \Mmf\IO\RequestHtml::__construct
+     * @covers \Mmf\IO\RequestHtml::setBulkOfInputGivenArray
      */
     protected function setUp() {
         $this->object = new RequestHtml;
@@ -32,6 +32,8 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\IO\RequestHtml::__construct
+     * @covers \Mmf\IO\RequestHtml::setBulkOfInputGivenArray
      * @covers \Mmf\IO\RequestHtml::input
      * @group io
      * @group modules
@@ -57,9 +59,12 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($valueArrayExpected,$request->input('testValueArray'));
         $this->assertEquals($valueNullExpected, $request->input('testValueNull'));
         $this->assertEquals($valueExpected,     $request->input('postTestValue'));
+        $this->assertEquals(null, $this->object->input('inputnotexists'), 'The var exist or the value is not null');
     }
 
     /**
+     * @covers \Mmf\IO\RequestHtml::__construct
+     * @covers \Mmf\IO\RequestHtml::setBulkOfInputGivenArray
      * @covers \Mmf\IO\RequestHtml::setInput
      * @group io
      * @group modules
@@ -80,10 +85,11 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($valueExpected,     $this->object->input('testValue'));
         $this->assertEquals($valueArrayExpected,$this->object->input('testValueArray'));
         $this->assertEquals($valueNullExpected, $this->object->input('testValueNull'));
-
     }
 
     /**
+     * @covers \Mmf\IO\RequestHtml::__construct
+     * @covers \Mmf\IO\RequestHtml::setBulkOfInputGivenArray
      * @covers \Mmf\IO\RequestHtml::filterVar
      * @group io
      * @group modules
@@ -101,6 +107,18 @@ class RequestHtmlTest extends \PHPUnit_Framework_TestCase {
 
         $var = 0.2;
         $varExpected = 0.2;
+        $this->assertEquals($varExpected,$this->object->filterVar($var));
+
+        $var = 1;
+        $varExpected = 1;
+        $this->assertEquals($varExpected,$this->object->filterVar($var));
+
+        $var = true;
+        $varExpected = true;
+        $this->assertEquals($varExpected,$this->object->filterVar($var));
+
+        $var = ['a'=>['b'=>'holi'], 'b'=>['c'=>['d'=>'holi']]];
+        $varExpected = ['a'=>['b'=>'holi'], 'b'=>['c'=>['d'=>'holi']]];
         $this->assertEquals($varExpected,$this->object->filterVar($var));
     }
 

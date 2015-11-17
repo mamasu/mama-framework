@@ -52,26 +52,6 @@ class ResponseJson implements ResponseInterface {
     }
 
     /**
-     * Return the data encode into the UTF8.
-     *
-     * @param mixed $dat
-     * @return mixed
-     */
-    private function utf8Encode($dat) {
-        if (is_string($dat)) {
-            return utf8_encode($dat);
-        }
-        if (!is_array($dat)) {
-            return $dat;
-        }
-        $ret = array();
-        foreach ($dat as $i => $d) {
-            $ret[$i] = $this->utf8Encode($d);
-        }
-        return $ret;
-    }
-
-    /**
      * Send headers if is possible.
      *
      * @param string $header

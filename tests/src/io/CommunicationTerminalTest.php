@@ -28,6 +28,7 @@ class CommunicationTerminalTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\IO\CommunicationTerminal::setRoute
      * @covers \Mmf\IO\CommunicationTerminal::route
      * @group io
      * @group modules
@@ -35,23 +36,39 @@ class CommunicationTerminalTest extends \PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testRoute() {
-        $this->assertEquals(true, true);
-    }
-
-    /**
-     * @covers \Mmf\IO\CommunicationTerminal::setRoute
-     * @group io
-     * @group modules
-     * @group development
-     * @group production
-     */
-    public function testSetRoute() {
         $host                   = 'testhost1';
         $uri                    = '/test.php?varname=asdf&varnmae2=asdf1';
         $this->object->setRoute($host.$uri);
 
         $route = $this->object->route();
         $this->assertEquals($host.$uri, $route);
+    }
+
+    /**
+     * @covers \Mmf\IO\CommunicationTerminal::method
+     * @covers \Mmf\IO\CommunicationTerminal::setMethod
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testMethod() {
+        $uri                    = '/test.php?varname=asdf&varnmae2=asdf1';
+
+        $this->object->setMethod($uri);
+        $this->assertEquals($uri, $this->object->method());
+    }
+
+    /**
+     * @covers \Mmf\IO\CommunicationTerminal::getTerminalRoute
+     * @group io
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testGetTerminalRoute() {
+        // TODO : get terminal route
+        $this->assertEquals('', $this->object->route());
     }
 
 }
