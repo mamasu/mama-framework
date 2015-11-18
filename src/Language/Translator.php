@@ -213,8 +213,6 @@ class Translator implements TranslatorInterface  {
              $translation = $translationId[$number];
          } else if (is_string($translationId)) { //Is string directly
              $translation = $translationId;
-         } else {
-             throw new TranslateException('Translation id not exists.('.$translationId.')');
          }
          return $translation;
     }

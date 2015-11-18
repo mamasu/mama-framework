@@ -31,8 +31,13 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::translate
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
      * @group translate
      * @group modules
      * @group development
@@ -44,8 +49,13 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::translate
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
      * @group translate
      * @group modules
      * @group development
@@ -58,8 +68,13 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::translate
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
      * @group translate
      * @group modules
      * @group development
@@ -73,8 +88,103 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testNotNullLocaleTranslate() {
+        $id  = 'mamaframework is great';
+        $this->assertEquals('Mamaframework es genial',      $this->object->translate($id, [], 'spa'));
+    }
+
+    /**
+     * @covers \Mmf\Language\Translator::__construct
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testInvalidLocaleTranslate() {
+        $id  = 'mamaframework is great';
+        try {
+            $this->object->translate($id, [], 'rata');
+            $this->assertEquals(true, false, 'Check if locale exists');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertEquals($e->getMessage(), "Invalid \"rata\" locale.", 'The exception not match with expected');
+        }
+
+    }
+
+    /**
+     * @covers \Mmf\Language\Translator::__construct
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testInvalidLocaleFileTranslate() {
+        $id  = 'mamaframework is great';
+        try {
+            $this->object->translate($id, [], 'rat');
+            $this->assertEquals(true, false, 'Check if locale exists');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertEquals($e->getMessage(), 'Invalid path file', 'The exception not match with expected');
+        }
+
+    }
+
+    /**
+     * @covers \Mmf\Language\Translator::__construct
+     * @covers \Mmf\Language\Translator::translate
+     * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testNotIdTranslate() {
+        $id  = 'mamaframework is greateeee';
+        try {
+            $this->object->translate($id, [], 'spa');
+            $this->assertEquals(true, false, 'Check if locale exists');
+        } catch (Mmf\Language\TranslateException $e) {
+            $this->assertEquals($e->getMessage(), "Translation id not exists.($id)", 'the message of exception does not match');
+        }
+
+    }
+
+    /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::translateChoice
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
      * @group translate
      * @group modules
      * @group development
@@ -87,8 +197,29 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
+     * @covers \Mmf\Language\Translator::translateChoice
+     * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
+     * @covers \Mmf\Language\Translator::getTranslation
+     * @covers \Mmf\Language\Translator::assertValidLocale
+     * @covers \Mmf\Language\Translator::getFileTranslations
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testTranslateNotNullLocaleChoice() {
+        $id = 'singularPlural';
+        $this->assertEquals('singular',$this->object->translateChoice($id, 0, [], 'spa'));
+        $this->assertEquals('plural',  $this->object->translateChoice($id, 1, [], 'spa'));
+    }
+
+    /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::setLocale
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -100,8 +231,10 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
+     * @covers \Mmf\Language\Translator::__construct
      * @covers \Mmf\Language\Translator::getLocale
      * @covers \Mmf\Language\Translator::getTranslationForId
+     * @covers \Mmf\Language\Translator::getBasicTranslationForId
      * @group translate
      * @group modules
      * @group development
@@ -111,5 +244,20 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('spa',$this->object->getLocale());
     }
 
+    /**
+     * @covers \Mmf\Language\TranslateException
+     * @group translate
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testLanguageException() {
+        try {
+            throw new Mmf\Language\TranslateException('message', 10);
+            $this->assertEquals(true, false, 'Exception does not working');
+        } catch (Mmf\Language\TranslateException $e) {
+            $this->assertEquals($e->getMessage(), 'message');
+        }
+    }
 
 }

@@ -78,13 +78,6 @@ class LanguageDB implements LanguageInterface {
         }
     }
 
-    /**
-     * Get locale from route. For example /eng/route/ this will return eng
-     * @return locale eng|spa|etc or false
-     */
-    private function getLocaleFromUser() {
-        $route = $this->communication->route();
-    }
 
     /**
      * Asserts that the locale is valid, throws an Exception if not.
