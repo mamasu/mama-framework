@@ -134,6 +134,90 @@ class BasicViewTest extends \PHPUnit_Framework_TestCase {
         $this->assertContains('http://mamaframeworks.com/js/generic/testscript.js', $contentView);
     }
 
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testChooseTemplate() {
+        $this->view->addVar('testVar', 1);
+        $this->view->get('product/testview.php', 'templateWithStylesAndScripts.php');
+
+        $statistics = ['a'=>'statistics', 'b'=>'statistics1'];
+        $this->view->addJsVar($statistics, 'statisti');
+        $this->view->addScript('/js/generic/testscript.js');
+        $this->view->addStyles('/css/test.css');
+
+
+        $contentView = $this->view->getContentWithTemplate();
+
+        $this->assertContains('http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js', $contentView);
+        $this->assertContains('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', $contentView);
+        $this->assertContains('http://mamaframeworks.com/js/generic/jquery-ui.js', $contentView);
+        $this->assertContains('http://mamaframeworks.com/js/generic/testscript.js', $contentView);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testWithEmptyTemplate() {
+        $this->view->addVar('testVar', 1);
+        $this->view->get('product/testview.php');
+
+        $statistics = ['a'=>'statistics', 'b'=>'statistics1'];
+        $this->view->addJsVar($statistics, 'statisti');
+        $this->view->addScript('/js/generic/testscript.js');
+        $this->view->addStyles('/css/test.css');
+
+
+        $contentView = $this->view->getContentWithTemplate();
+
+        $this->assertContains('1', $contentView);
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testNotExistingTemplate() {
+        $this->view->addVar('testVar', 1);
+        $this->view->get('product/testview.php');
+
+        $statistics = ['a'=>'statistics', 'b'=>'statistics1'];
+        $this->view->addJsVar($statistics, 'statisti');
+        $this->view->addScript('/js/generic/testscript.js');
+        $this->view->addStyles('/css/test.css');
+
+
+        $this->view->setTemplate('templateWithStylesAndScriptsNOTEXISTING.php');
+        try {
+            $contentView = $this->view->getContentWithTemplate ();
+            $this->assertEquals(true, false, 'Throw exception is not thrown.');
+        } catch(\Exception $e) {
+            $this->assertEquals($e->getCode(), 1502);
+        }
+    }
+
+    /**
+     * @group mvc
+     * @group modules
+     * @group development
+     * @group production
+     */
+    public function testAssetEcho() {
+        ob_start();
+        $return = $this->view->asset('asdf', FALSE);
+        $this->assertEquals($return, 'http://mamaframeworks.comasdf');
+        $output = ob_get_clean();
+        $this->assertEquals($output, 'http://mamaframeworks.comasdf');
+    }
+
 }
 
 function callbackConfigView() {
@@ -143,7 +227,7 @@ function callbackConfigView() {
         'defaultScripts' => array("http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js",
         "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
         "/js/generic/jquery-ui.js"),
-        'defaultCSS' => array(),
+        'defaultCSS' => array("testcss.css", "http://testcss.css"),
         'installFolder' => "http://mamaframeworks.com"
     ];
     $return = array('mvc' => $conection1, 'URLBase' => __DIR__ . '/../../../app/');

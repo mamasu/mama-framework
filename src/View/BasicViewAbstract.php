@@ -156,11 +156,10 @@ abstract class BasicViewAbstract implements BasicViewInterface {
         //Check if we must minified the style
         $minTag = "<script type='$type' src='min/?f=" . $this->asset($jsfile, TRUE) . "' ></script>";
         $maxTag = "<script type='$type' src='" . $this->asset($jsfile, TRUE) . "' ></script>";
-        if ($min) {
-            $includeTag = $minTag;
-        } else {
-            $includeTag = $maxTag;
-        }
+
+        //TODO: min files
+        $includeTag = $maxTag;
+
 
         $minPos = strpos($this->scripts, $minTag);
         $maxPos = strpos($this->scripts, $maxTag);
@@ -180,11 +179,10 @@ abstract class BasicViewAbstract implements BasicViewInterface {
         //Check if we must minified the style
         $minTag = "<link href='min/?f=" . $this->asset($cssfile, TRUE) . "' rel='stylesheet' type='text/css'/>";
         $maxTag = "<link href='" . $this->asset($cssfile, TRUE) . "' rel='stylesheet' type='text/css'/>";
-        if ($min) {
-            $includeTag = $minTag;
-        } else {
-            $includeTag = $maxTag;
-        }
+
+        //TODO: min styles
+        $includeTag = $maxTag;
+
 
         $minPos = strpos($this->styles, $minTag);
         $maxPos = strpos($this->styles, $maxTag);
@@ -268,7 +266,8 @@ abstract class BasicViewAbstract implements BasicViewInterface {
                 /** @noinspection PhpIncludeInspection */
                 include ($path);
             } else {
-                throw new Exception('Template does not exists', 1502);
+                $output = ob_get_clean();
+                throw new \Exception('Template does not exists', 1502);
             }
 
             $output = ob_get_clean();

@@ -71,7 +71,7 @@ class TwigView extends BasicViewAbstract {
             $vars['styles'] = $this->styles;
         }
 
-        return $this->twig->render($path, $viewVars);
+        return $this->twig->render('html/'.$path, $viewVars);
     }
 
 

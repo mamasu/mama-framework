@@ -18,7 +18,8 @@
         "mmf/parameter": "0.0.*",
         "mmf/event": "0.0.*",
         "mmf/log": "0.0.*",
-        "mmf/autoloader": "0.0.*"
+        "mmf/autoloader": "0.0.*",
+        "twig/twig":"~1.0"
     },
     "require-dev": {
     },

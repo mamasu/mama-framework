@@ -58,6 +58,37 @@ class MySQLModelAbstractTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($result>0,true);
     }
 
+    /**
+     * @group mvc
+     * @group db
+     * @group development
+     */
+    public function testBadQuery() {
+        $model = new \App\Models\testmodel($this->connection);
+        try {
+            $result = $model->testBadSQL ();
+            $this->assertEquals(true, false);
+        } catch (Mmf\Model\ModelException $e) {
+            $this->assertEquals(true, true);
+        }
+
+    }
+
+    /**
+     * @group mvc
+     * @group db
+     * @group development
+     */
+    public function testNewDatabaseName() {
+        try {
+            $model = new \App\Models\testmodel($this->connection, 'default');
+            $this->assertEquals(true, false);
+        } catch (Mmf\Model\ModelException $e) {
+            $this->assertEquals(true, true);
+        }
+
+    }
+
 }
 
 function callbackConfigModelAbstract() {

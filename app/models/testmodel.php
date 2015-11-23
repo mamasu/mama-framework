@@ -49,4 +49,9 @@ class testmodel extends \Mmf\Model\MySQLModelAbstract{
                 ';
          return $this->delete($sql);
     }
+
+    public function testBadSQL() {
+        $sql = 'SELECT * FROM teta_not_db';
+        return $this->select($sql);
+    }
 }
