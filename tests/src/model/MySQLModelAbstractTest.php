@@ -54,6 +54,8 @@ class MySQLModelAbstractTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($result>0,true);
         $result = $model->testUpdate($this->insertID);
         $this->assertEquals($result>0,true);
+        $result = $model->testExecuteWithParameters($this->insertID);
+        $this->assertEquals(is_array($result),true);
         $result = $model->testDelete($this->insertID);
         $this->assertEquals($result>0,true);
     }

@@ -54,4 +54,10 @@ class testmodel extends \Mmf\Model\MySQLModelAbstract{
         $sql = 'SELECT * FROM teta_not_db';
         return $this->select($sql);
     }
+
+    public function testExecuteWithParameters($id) {
+        $sql = 'SELECT * FROM `test` WHERE id = :id';
+        $parameters = [':id'=>$id];
+        return $this->select($sql, $parameters);
+    }
 }

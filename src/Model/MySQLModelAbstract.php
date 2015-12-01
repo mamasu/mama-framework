@@ -65,8 +65,8 @@ abstract class MySQLModelAbstract implements BasicModelInterface {
      * @return array selected rows.
      * @throws ModelException
      */
-    public function select($SQL) {
-        $queryResult = $this->executeSQL($SQL);
+    public function select($SQL, $parameters = null) {
+        $queryResult = $this->executeSQL($SQL, $parameters);
         return $queryResult->fetchAll(\PDO::FETCH_ASSOC);
     }
 
@@ -77,8 +77,8 @@ abstract class MySQLModelAbstract implements BasicModelInterface {
      * @return int id of inserted row.
      * @throws ModelException
      */
-    public function insert($SQL) {
-        $this->executeSQL($SQL);
+    public function insert($SQL, $parameters = null) {
+        $this->executeSQL($SQL, $parameters);
         return $this->connection->lastInsertId();
     }
 
@@ -89,8 +89,8 @@ abstract class MySQLModelAbstract implements BasicModelInterface {
      * @return int number of deleted rows.
      * @throws ModelException
      */
-    public function delete($SQL) {
-        $queryResult = $this->executeSQL($SQL);
+    public function delete($SQL, $parameters = null) {
+        $queryResult = $this->executeSQL($SQL, $parameters);
         return $queryResult->rowCount();
     }
 
@@ -101,8 +101,8 @@ abstract class MySQLModelAbstract implements BasicModelInterface {
      * @return int number of update rows.
      * @throws ModelException
      */
-    public function update($SQL) {
-        $queryResult = $this->executeSQL($SQL);
+    public function update($SQL, $parameters = null) {
+        $queryResult = $this->executeSQL($SQL, $parameters);
         return $queryResult->rowCount();
     }
 
