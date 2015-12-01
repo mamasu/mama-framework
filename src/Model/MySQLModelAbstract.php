@@ -43,10 +43,14 @@ abstract class MySQLModelAbstract implements BasicModelInterface {
      * @param string $SQL
      * @throws ModelException
      */
-    private function executeSQL($SQL) {
+    private function executeSQL($SQL, $parameters = null) {
         try {
             $queryPrepare = $this->connection->prepare($SQL);
-            $queryPrepare->execute();
+            if (is_array($parameters)) {
+                $queryPrepare->execute($parameters);
+            } else {
+                $queryPrepare->execute();
+            }
         } catch (\PDOException $e) {
             throw new ModelException('Error in the Select QUERY ('.$SQL.') '
                     . 'and error message('.$e->getMessage().')');
