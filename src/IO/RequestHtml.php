@@ -94,14 +94,14 @@ class RequestHtml implements RequestInterface {
         $response = NULL;
         if (is_bool($var)) {
             $response = $var;
+        } elseif(is_int($var)) {
+            $response = $var;
+        } elseif(is_float($var)) {
+            $response = $var;
         }
         if($var != 'null') {
             if(is_string($var)) {
-                $response = filter_var($var, FILTER_SANITIZE_SPECIAL_CHARS);
-            } elseif(is_int($var)) {
-                $response = $var;
-            } elseif(is_float($var)) {
-                $response = $var;
+                $response = filter_var($var, FILTER_SANITIZE_SPECIAL_CHARS);            
             } elseif(is_array($var)) {
                 $response = array();
                 foreach ($var as $key => $value) {
@@ -114,6 +114,7 @@ class RequestHtml implements RequestInterface {
             }
         }
         return $response;
+        
     }
 
 }
