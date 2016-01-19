@@ -257,8 +257,12 @@ abstract class BasicViewAbstract implements BasicViewInterface {
         if ($this->template == "") {
             $output = $content;
         } else {
+            $scripts = '';
+            if (strlen($this->scriptVars) > 0) {
+                $scripts = "<script>/ Global Vars /".$this->scriptVars."</script>";
+            }
             $styles = $this->getAllCss();
-            $scripts = $this->getAllScripts();
+            $scripts .= $this->getAllScripts();
             ob_start();
             $path = $this->viewsFolder . '/template/' . $this->template;
 
