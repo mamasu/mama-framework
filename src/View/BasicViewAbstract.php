@@ -259,7 +259,7 @@ abstract class BasicViewAbstract implements BasicViewInterface {
         } else {
             $scripts = '';
             if (strlen($this->scriptVars) > 0) {
-                $scripts = "<script>/ Global Vars /".$this->scriptVars."</script>";
+                $scripts = "<script>/* Global Vars */".$this->scriptVars."</script>";
             }
             $styles = $this->getAllCss();
             $scripts .= $this->getAllScripts();
