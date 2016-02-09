@@ -76,7 +76,7 @@ abstract class BasicViewAbstract implements BasicViewInterface {
 
     /**
      *
-     * @param ParametersInterface $config
+     * @param \Mmf\Parameter\ParametersInterface $config
      */
     public function __construct(\Mmf\Parameter\ParametersInterface $config) {
         $this->config = $config;
