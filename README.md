@@ -1,0 +1,1 @@
+composer create-project  mmf/mmf  --repository-url=http://localhost:4680/ test-mmf
