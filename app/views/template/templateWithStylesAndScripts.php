@@ -6,13 +6,13 @@
         <?php if(isset($styles)) echo $styles;?>
     </head>
     <body>
-            <?php //echo $menu; ?>        
+            <?php //echo $menu; ?>
 
-            <?php echo $content;?> 
+            <?php echo $content;?>
 
-            <?php 
+<?php
 //            if(isset($footer)){
-//                echo $footer;        
+//                echo $footer;
 //            }
 //            else{
 //                require_once($_SERVER['DOCUMENT_ROOT'] . '/class/footer.php');

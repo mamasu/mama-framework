@@ -2,3 +2,9 @@
 
 .gitattributes export-ignore
 .gitignore export-ignore
+/test export-ignore
+/app export-ignore
+/config export-ignore
+/mktfilesystem export-ignore
+/mmffilesystem export-ignore
+
