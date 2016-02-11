@@ -26,14 +26,15 @@
     "autoload": {
         "psr-4": {
             "Mmf\\": "src/"
-        },
-	"exclude-from-classmap": ["/test/", "/app/", "/config/", "/mktfilesystem/", "/mmffilesystem/"]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\": "app/"
-        },
-        "exclude-from-classmap": ["/test/", "/app/", "/config/", "/mktfilesystem/", "/mmffilesystem/"]
+        }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "archive": {
+	"exclude": ["/test/", "/app/", "/config/", "/mktfilesystem/", "/mmffilesystem/"]
+    }
 }
