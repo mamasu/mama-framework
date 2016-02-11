@@ -102,7 +102,10 @@ class ACL implements ACLInterface {
      * FALSE if the user is not allowed.
      */
     public function isAllowed(RoutingRuleAbstract $routingRule) {
-        $controller = str_ireplace("Controller", "",  $routingRule->getController());
+        $controller = $routingRule->getController();
+        if (substr($controller, -10) == "Controller") {
+            $controller = substr($controller,0, -10);
+        }        
 
         //$function = new \ReflectionClass($routingRule->getController() . 'Controller');
         /*
