@@ -5,4 +5,4 @@ composer create-project  mmf/mmf  --repository-url=http://repo.mamasulabs.com/ [
 
 Example:
 
-composer create-project  mmf/mmf  --repository-url=http://repo.mamasulabs.com/ xavi-mmf
+composer create-project  mmf/mmf  --repository-url=http://repo.mamasulabs.com/ mmf
