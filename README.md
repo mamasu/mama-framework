@@ -1,3 +1,7 @@
+Install composer
+========
+
+
 Usage:
 
 composer create-project  mmf/mmf [Directory name]
