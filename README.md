@@ -1,8 +1,8 @@
 Usage:
 
-composer create-project  mmf/mmf  --repository-url=http://repo.mamasulabs.com/ [Directory name]
+composer create-project  mmf/mmf [Directory name]
 
 
 Example:
 
-composer create-project  mmf/mmf  --repository-url=http://repo.mamasulabs.com/ mmf
+composer create-project  mmf/mmf mmf
