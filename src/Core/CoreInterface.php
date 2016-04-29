@@ -117,7 +117,7 @@ interface CoreInterface {
     public function connection();
 
     /**
-     * @return \AuthInterface
+     * @return \Mmf\Auth\AuthInterface
      */
     public function auth();
 }

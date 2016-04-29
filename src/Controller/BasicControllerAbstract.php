@@ -18,7 +18,7 @@ namespace Mmf\Controller;
 abstract class BasicControllerAbstract implements BasicControllerInterface {
     /**
      *
-     * @var CoreInterface
+     * @var Mmf\Core\CoreInterface
      */
     protected $MmfCore;
     public function __construct(\Mmf\Core\CoreInterface $core) {
